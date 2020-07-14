@@ -34,8 +34,11 @@
 
 #include <leg_detector/calc_leg_features.h>
 
-#include <opencv/cxcore.h>
-#include <opencv/cv.h>
+//#include <opencv/cxcore.h>
+//#include <opencv/cv.h>
+#include <opencv4/opencv2/opencv.hpp>
+#include <opencv4/opencv2/core/types_c.h>
+#include <opencv2/core/core_c.h>
 #include <algorithm>
 #include <vector>
 
@@ -170,6 +173,13 @@ std::vector<float> calcLegFeatures(laser_processor::SampleSet* cluster, const se
   cvReleaseMat(&rot_points);
   rot_points = 0;
 
+  // if once needed to be updated replace cvCreateMat with new cv::Mat and cvReleaseMat with delete
+  //delete points;
+  //delete W;
+  //delete U;
+  //delete V;
+  //delete rot_points;
+
   features.push_back(linearity);
 
   // Compute Circularity
@@ -206,6 +216,10 @@ std::vector<float> calcLegFeatures(laser_processor::SampleSet* cluster, const se
   B = 0;
   cvReleaseMat(&sol);
   sol = 0;
+
+  //delete A;
+  //delete B;
+  //delete sol;
 
   float circularity = 0.0;
   for (laser_processor::SampleSet::iterator i = cluster->begin();

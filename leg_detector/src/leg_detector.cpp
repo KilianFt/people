@@ -37,9 +37,11 @@
 #include <leg_detector/laser_processor.h>
 #include <leg_detector/calc_leg_features.h>
 
-#include <opencv/cxcore.h>
-#include <opencv/cv.h>
-#include <opencv/ml.h>
+
+//#include <opencv/cxcore.h>
+//#include <opencv/cv.h>
+#include <opencv4/opencv2/opencv.hpp>
+//#include <opencv/ml.h>
 
 #include <people_msgs/PositionMeasurement.h>
 #include <people_msgs/PositionMeasurementArray.h>
